@@ -23,7 +23,7 @@ public class AppConfig {
     @Value("${spring.data.redis.port}")
     private Integer redisPort;
     
-    @Value("${spring.data.redis.user}")
+    @Value("${spring.data.redis.username}")
     private String redisUser;
 
     @Value("${spring.data.redis.password}")
