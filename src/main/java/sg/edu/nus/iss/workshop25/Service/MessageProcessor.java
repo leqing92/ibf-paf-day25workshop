@@ -18,6 +18,6 @@ public class MessageProcessor {
     @Async // Create a thread
     public void start() {
         ExecutorService thrPool = Executors.newFixedThreadPool(2);
-        thrPool.submit(new MessageService(template, "w0"));
+        thrPool.submit(new MessageService(template));
     }
 }

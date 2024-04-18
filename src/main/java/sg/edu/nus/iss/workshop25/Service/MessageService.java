@@ -7,15 +7,17 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObjectBuilder;
+import sg.edu.nus.iss.workshop25.constant.Constant;
 
-public class MessageService implements Runnable {
-   private final RedisTemplate<String, String> template;
-   private final String name;
+public class MessageService implements Runnable {  
 
-   public MessageService(RedisTemplate<String, String> template, String name) {
+   private String id;
+   private String message;
+   private RedisTemplate<String, String> template;
+
+   public MessageService(RedisTemplate<String, String> template) {
       this.template = template;
-      this.name = name;
-   } 
+   }
 
    public void run() {
       System.out.println("*** Starting thread");
@@ -24,14 +26,12 @@ public class MessageService implements Runnable {
       Scanner scan = new Scanner(System.in);
       
          try{
-            while (true){
-               System.out.println("*** Input ID ");
-               String id = scan.nextLine();
+            while (true){               
                System.out.println("*** Input message ");
-               String message = scan.nextLine();
+               message = scan.nextLine();
    
                JsonObjectBuilder jBuilder = Json.createObjectBuilder()
-                              .add("id", id)
+                              .add("id", Constant.ID)
                               .add("message", message);
    
                String jObject = jBuilder.build().toString(); 
@@ -49,4 +49,8 @@ public class MessageService implements Runnable {
          }
    }
 
+   public String getId() {
+      return id;
+   }
+   
 }
