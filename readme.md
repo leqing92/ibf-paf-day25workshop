@@ -1,6 +1,6 @@
 ## read all ID
 
-This branch read all ID from the Redis channel "mytopic" 
+This branch read message sent from all ID from the Redis channel "mytopic" 
 
 ## Command to connect Ubuntu to Redis Railway
 ```
